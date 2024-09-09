@@ -19,6 +19,7 @@ import Categories from "@/components/categories";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import SearchBar from "@/components/SearchBar";
 import { ExecutionEnvironment } from "expo-constants";
+import Grid from "@/components/Grid";
 
 const home = () => {
   
@@ -56,6 +57,12 @@ const home = () => {
           handleChangeCategory={handleChangeCategory}
         />
       </ScrollView>
+
+
+      {/* Grid */}
+      <View>
+        <Grid/>
+      </View>
     </ScreenWrapper>
   );
 };

@@ -1,7 +1,7 @@
 import { View, Text, Pressable , StyleSheet } from 'react-native'
 import React from 'react'
 import { data } from '@/constants/data'
-import Animated, { FadeInLeft } from 'react-native-reanimated';
+import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import { vh } from '@/helpers/valuechangers';
 import { theme } from '@/constants/theme';
 import CustomText from './CustomText';
@@ -36,7 +36,7 @@ export default Categories
 const CategoryItem =({item ,index, isActive , handleChangeCategory}:Props)=>{
     return (
        
-        <Animated.View entering={FadeInLeft.duration((index+1)*200).delay(1000).damping(14)} style={isActive == item ?style.activeitem:style.categoryitem}>
+        <Animated.View entering={FadeInRight.duration((index+1)*200).delay(1000).damping(14)} style={isActive == item ?style.activeitem:style.categoryitem}>
             <Pressable onPress={()=>{
             console.log(item)
             isActive == item ? null : handleChangeCategory(item)

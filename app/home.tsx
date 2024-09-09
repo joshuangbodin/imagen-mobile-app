@@ -18,21 +18,18 @@ import { vh } from "@/helpers/valuechangers";
 import Categories from "@/components/categories";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import SearchBar from "@/components/SearchBar";
+import { ExecutionEnvironment } from "expo-constants";
 
 const home = () => {
-  //search const
-  const [search, setSearch] = useState("");
+  
 
   //active category
   const [activeCategory, setActiveCategory] = useState("");
-  //changeactivecategory
+  
   const handleChangeCategory = (p: string) => {
     setActiveCategory(p);
   };
 
-  //safe area view
-  const { top } = useSafeAreaInsets();
-  const paddingTop = top > 0 ? top + 10 : top + 30;
   return (
     <ScreenWrapper style={[style.container]}>
 

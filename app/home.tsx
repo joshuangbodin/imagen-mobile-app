@@ -47,22 +47,21 @@ const home = () => {
         </Pressable>
       </View>
 
-      {/* search bar */}
-      <SearchBar />
-
-      {/* Category List */}
-      <ScrollView contentContainerStyle={{ gap: 10 }} horizontal>
-        <Categories
-          activeCategory={activeCategory}
-          handleChangeCategory={handleChangeCategory}
-        />
+      <ScrollView>
+        {/* search bar */}
+        <SearchBar />
+        {/* Category List */}
+        <ScrollView contentContainerStyle={{ gap: 10 }} horizontal>
+          <Categories
+            activeCategory={activeCategory}
+            handleChangeCategory={handleChangeCategory}
+          />
+        </ScrollView>
+        {/* Grid */}
+        <View style={{minHeight:5}}>
+          <Grid/>
+        </View>
       </ScrollView>
-
-
-      {/* Grid */}
-      <View>
-        <Grid/>
-      </View>
     </ScreenWrapper>
   );
 };
@@ -70,12 +69,15 @@ const home = () => {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    height: vh(6),
+    paddingBottom:20,
+    marginBottom:10,
   },
   headertext: {
     fontSize: vh(3.5),

@@ -5,6 +5,7 @@ import Animated, { FadeInLeft, FadeInRight } from 'react-native-reanimated';
 import { vh } from '@/helpers/valuechangers';
 import { theme } from '@/constants/theme';
 import CustomText from './CustomText';
+import { FlatList } from 'react-native-gesture-handler';
 
 
 interface Props{
@@ -21,11 +22,9 @@ interface catprops{
 const Categories = ({activeCategory,handleChangeCategory}:catprops) => {
   return (
   <View style={style.flatlist}>
-    {data.category.map(
-        (item,index) => (
-            <CategoryItem index={index} key={item} item={item} handleChangeCategory={handleChangeCategory} isActive={activeCategory} />
-        )
-    )}
+    <FlatList showsHorizontalScrollIndicator={false} contentContainerStyle={{gap:10}} horizontal data={data.category} renderItem={({item,index})=>(
+        <CategoryItem key={index} isActive={activeCategory} index={index} handleChangeCategory={handleChangeCategory} item={item}/>
+    )}/>
   </View>
   )
 }
@@ -53,7 +52,7 @@ const style =StyleSheet.create({
         minHeight:25,
         height:vh(5),
         padding:10,
-        borderRadius:10,
+        borderRadius:15,
         borderCurve:"continuous",
         backgroundColor: theme.colors.white,
         justifyContent:"center",
@@ -72,8 +71,6 @@ const style =StyleSheet.create({
     
     flatlist:{
         marginTop:20,
-        flexDirection:"row",
         height: vh(8),
-        gap:10,
     }
 })

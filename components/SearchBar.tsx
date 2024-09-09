@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import { Feather, Ionicons } from '@expo/vector-icons'
-import { vh } from '@/helpers/valuechangers'
+import { vh, vw } from '@/helpers/valuechangers'
 
 const SearchBar = () => {
      //search const
@@ -9,10 +9,10 @@ const SearchBar = () => {
 
   return (
     <View style={styles.searchbar}>
-    <Feather size={20} color={"gray"} name="search"/>
+    <Feather size={vh(3)} color={"gray"} name="search"/>
     <TextInput placeholder=' Search for photos...' style={styles.textinput} value={search} onChangeText={(value) => setSearch(value)}/>
     { search&&<Pressable style={styles.cancel}>
-        <Ionicons size={25} color={"gray"} name="close"/>
+        <Ionicons size={vh(3)} color={"gray"} name="close"/>
     </Pressable>}
   </View>
   )
@@ -23,16 +23,15 @@ export default SearchBar
 const styles = StyleSheet.create({
     searchbar:{
         flexDirection:"row",
-        width:"100%",
+        width:vw(90),
         justifyContent:"space-between",
-        marginTop:35,
         backgroundColor:"#fff",
-        minHeight: 45,
-        maxHeight:50,
+        height: vh(6.5),
         alignItems:"center",
-        borderRadius: 20,
+        borderRadius: 15,
         borderCurve:"continuous",
         paddingHorizontal:10,
+        alignSelf:'center',
         elevation:2,
         shadowColor: "rgba(240,230,240,.8)",
         shadowOffset:{

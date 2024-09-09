@@ -4,6 +4,7 @@ import { vh, vw } from '@/helpers/valuechangers'
 import {LinearGradient} from "expo-linear-gradient"
 import Animated, { FadeInDown } from "react-native-reanimated"
 import { useRouter } from 'expo-router'
+import CustomButton from '@/components/CustomButton'
 
 const index = () => {
   const router = useRouter()
@@ -18,10 +19,8 @@ const index = () => {
         <View style={style.welcomecont}>
           <Animated.Text style={style.header} >Imagen</Animated.Text>
           <Animated.Text style={style.support} >Beauty and Art in every capture.</Animated.Text>
-          <Pressable onPress={() =>{
-            router.push("home")
-          }} ><Animated.View style={style.button} ><Text style={style.btntext}>Explore Now</Text></Animated.View></Pressable>
-        </View>
+          <CustomButton text='Explore Now' style={style.button}/>
+          </View>
 
       </LinearGradient>
       </Animated.View>
@@ -32,25 +31,25 @@ const index = () => {
 
 const style = StyleSheet.create({
   image:{
-    width: "100%",
-    height: "100%",
+    width: vw(100),
+    height: vh(100),
     position:"absolute",
     objectFit:"cover",
     transform:"rotate(180deg)"
   },
   container:{
-    width:"100%",
-    height:"100%",
+    width:vw(100),
+    height:vh(100),
     flex:1,
   },
   gradient:{
     position:"absolute",
     bottom:0,
-    width:"100%",
+    width:vw(100),
     height:"60%"
   },
   welcomecont:{
-    width: "100%",
+    width: vw(100),
     height:"60%",
     position:"absolute",
     bottom:0,
@@ -71,12 +70,10 @@ const style = StyleSheet.create({
     fontWeight:"semibold"
   },
   button:{
-    width:"100%",
-    justifyContent:"center",
-    alignItems:"center",
-    height:50,
-    backgroundColor:"black",
-    borderRadius:20,
+    width:vw(70),
+    height: vh(7),
+    alignSelf:'center',
+
   },
   btntext:{
     color:"white",

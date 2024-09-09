@@ -5,6 +5,7 @@ import { Feather, FontAwesome, FontAwesome6, Ionicons } from '@expo/vector-icons
 import { SearchBar } from 'react-native-screens'
 import { vh } from '@/helpers/valuechangers'
 import Categories from '@/components/categories'
+import ScreenWrapper from '@/components/ScreenWrapper'
 
 
 const home = () => {
@@ -23,7 +24,7 @@ const home = () => {
     const {top} = useSafeAreaInsets()
     const paddingTop = top>0? top+10 : top+30
   return (
-    <View style={[style.container,{paddingTop}]}>
+    <ScreenWrapper style={[style.container]}>
       <View style={style.header}>
         <Pressable>
             <Text style={style.headertext}>Imagen</Text>
@@ -42,7 +43,7 @@ const home = () => {
       <ScrollView contentContainerStyle={{gap:10}} horizontal>
         <Categories activeCategory={activeCategory} handleChangeCategory={handleChangeCategory}/>
       </ScrollView>
-    </View>
+    </ScreenWrapper>
   )
 }
 
@@ -88,7 +89,7 @@ const style =  StyleSheet.create(
            borderColor:"#fff",
            borderRadius: 20,
            borderCurve:"continuous",
-           fontSize: vh(1.5),
+           fontSize: vh(1.8),
         },
         category:{
             

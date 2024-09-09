@@ -1,16 +1,15 @@
-import { Dimensions, useWindowDimensions } from "react-native";
+import { Dimensions } from "react-native";
 
 
-const window = Dimensions.get("screen")
-var windowwidth = window.width
-var windowheight = window.height
+const {width , height} = Dimensions.get('window');
 
-export const vw =(p:number)=>{
-    const percentage = p * (windowwidth/100);
-    return percentage
+
+export const vw =(percentage:number)=>{
+    const value = (percentage*width)/100;
+    return value
 }
 
-export const vh =(p:number)=>{
-    const percentage = p * (windowheight/100);
-    return percentage
+export const vh =(percentage:number)=>{
+    const value = (percentage*height)/100;
+    return value
 }

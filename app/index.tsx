@@ -19,7 +19,7 @@ const index = () => {
         <View style={style.welcomecont}>
           <Animated.Text style={style.header} >Imagen</Animated.Text>
           <Animated.Text style={style.support} >Beauty and Art in every capture.</Animated.Text>
-          <CustomButton text='Explore Now' style={style.button}/>
+          <CustomButton onPress={()=> router.push('/home')} text='Explore Now' style={style.button}/>
           </View>
 
       </LinearGradient>
@@ -46,11 +46,11 @@ const style = StyleSheet.create({
     position:"absolute",
     bottom:0,
     width:vw(100),
-    height:"60%"
+    height:vh(65)
   },
   welcomecont:{
     width: vw(100),
-    height:"60%",
+    height:vh(40),
     position:"absolute",
     bottom:0,
     padding:50,
@@ -58,13 +58,13 @@ const style = StyleSheet.create({
     
   },
   header:{
-    fontSize:35,
+    fontSize:vh(4.5),
     textTransform:"capitalize",
     alignSelf:"center",
     fontWeight:"bold",
   },
   support:{
-    fontSize:15,
+    fontSize:vh(1.8),
     textTransform:"capitalize",
     alignSelf:"center",
     fontWeight:"semibold"
@@ -73,7 +73,6 @@ const style = StyleSheet.create({
     width:vw(70),
     height: vh(7),
     alignSelf:'center',
-
   },
   btntext:{
     color:"white",

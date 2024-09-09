@@ -2,6 +2,9 @@ import { View, Text, Pressable , StyleSheet } from 'react-native'
 import React from 'react'
 import { data } from '@/constants/data'
 import Animated, { FadeInLeft } from 'react-native-reanimated';
+import { vh } from '@/helpers/valuechangers';
+import { theme } from '@/constants/theme';
+import CustomText from './CustomText';
 
 
 interface Props{
@@ -39,7 +42,7 @@ const CategoryItem =({item ,index, isActive , handleChangeCategory}:Props)=>{
             isActive == item ? null : handleChangeCategory(item)
             
         }}>
-                <Text style={isActive == item ? {color:"white",textTransform:"capitalize"}:{textTransform:"capitalize"}}>{item}</Text>
+                <CustomText text={item} style={isActive == item ? {color:"white",textTransform:"capitalize"}:{textTransform:"capitalize"}}></CustomText>
                 </Pressable>
         </Animated.View>
     )
@@ -48,19 +51,21 @@ const CategoryItem =({item ,index, isActive , handleChangeCategory}:Props)=>{
 const style =StyleSheet.create({
     categoryitem:{
         minHeight:25,
+        height:vh(5),
         padding:10,
         borderRadius:10,
         borderCurve:"continuous",
-        backgroundColor:"#fff",
+        backgroundColor: theme.colors.white,
         justifyContent:"center",
         alignItems:"center"
     },
     activeitem:{
         minHeight:25,
+        height:vh(5),
         padding:10,
         borderRadius:10,
         borderCurve:"continuous",
-        backgroundColor:"gray",
+        backgroundColor: theme.colors.gray,
         justifyContent:"center",
         alignItems:"center"
     },
@@ -68,7 +73,7 @@ const style =StyleSheet.create({
     flatlist:{
         marginTop:20,
         flexDirection:"row",
-        height: "8%",
+        height: vh(8),
         gap:10,
     }
 })

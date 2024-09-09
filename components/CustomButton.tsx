@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
       btntext:{
         color:"white",
         fontWeight:"semibold",
-
+        fontSize: vh(1.8)
       }
 });

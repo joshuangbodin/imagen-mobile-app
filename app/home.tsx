@@ -1,103 +1,84 @@
-import { View, Text , StyleSheet, Pressable, TextInput, ScrollView } from 'react-native'
-import React, { useState } from 'react'
-import {  useSafeAreaInsets } from 'react-native-safe-area-context'
-import { Feather, FontAwesome, FontAwesome6, Ionicons } from '@expo/vector-icons'
-import { SearchBar } from 'react-native-screens'
-import { vh } from '@/helpers/valuechangers'
-import Categories from '@/components/categories'
-import ScreenWrapper from '@/components/ScreenWrapper'
-
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  TextInput,
+  ScrollView,
+} from "react-native";
+import React, { useState } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  Feather,
+  FontAwesome,
+  FontAwesome6,
+  Ionicons,
+} from "@expo/vector-icons";
+import { vh } from "@/helpers/valuechangers";
+import Categories from "@/components/categories";
+import ScreenWrapper from "@/components/ScreenWrapper";
+import SearchBar from "@/components/SearchBar";
 
 const home = () => {
-    //search const
-    const [search , setSearch] = useState("")
+  //search const
+  const [search, setSearch] = useState("");
 
-    //active category
-    const [activeCategory, setActiveCategory] = useState("")
-    //changeactivecategory
-    const handleChangeCategory = (p:string)=>{
-        setActiveCategory(p);
-    }
+  //active category
+  const [activeCategory, setActiveCategory] = useState("");
+  //changeactivecategory
+  const handleChangeCategory = (p: string) => {
+    setActiveCategory(p);
+  };
 
-
-    //safe area view 
-    const {top} = useSafeAreaInsets()
-    const paddingTop = top>0? top+10 : top+30
+  //safe area view
+  const { top } = useSafeAreaInsets();
+  const paddingTop = top > 0 ? top + 10 : top + 30;
   return (
     <ScreenWrapper style={[style.container]}>
+
+      {/* header */}
       <View style={style.header}>
+        <Text style={style.headertext}>Imagen</Text>
+
         <Pressable>
-            <Text style={style.headertext}>Imagen</Text>
-        </Pressable>
-        <Pressable>
-            <FontAwesome6 size={25} color={"darkergray"} name="bars-staggered"/>
+          <FontAwesome6
+            size={vh(3.5)}
+            color={"darkergray"}
+            name="bars-staggered"
+          />
         </Pressable>
       </View>
-      <View style={style.searchbar}>
-        <Feather size={20} color={"gray"} name="search"/>
-        <TextInput placeholder=' Search for photos...' style={style.textinput} value={search} onChangeText={(value) => setSearch(value)}/>
-        { search&&<Pressable style={style.cancel}>
-            <Ionicons size={25} color={"gray"} name="close"/>
-        </Pressable>}
-      </View>
-      <ScrollView contentContainerStyle={{gap:10}} horizontal>
-        <Categories activeCategory={activeCategory} handleChangeCategory={handleChangeCategory}/>
+
+      {/* search bar */}
+      <SearchBar />
+
+      {/* Category List */}
+      <ScrollView contentContainerStyle={{ gap: 10 }} horizontal>
+        <Categories
+          activeCategory={activeCategory}
+          handleChangeCategory={handleChangeCategory}
+        />
       </ScrollView>
     </ScreenWrapper>
-  )
-}
+  );
+};
 
-const style =  StyleSheet.create(
-    {
-        container:{
-            flex:1,
-            paddingHorizontal:20,
-        }, 
-        header:{ 
-            flexDirection:"row",
-            justifyContent:"space-between",
-            alignItems:"center"
-        },
-        headertext:{
-            fontSize:25,
-            fontWeight:"bold"
-        }, 
-        searchbar:{
-            flexDirection:"row",
-            width:"100%",
-            justifyContent:"space-between",
-            marginTop:35,
-            backgroundColor:"#fff",
-            minHeight: 45,
-            maxHeight:50,
-            alignItems:"center",
-            borderRadius: 20,
-            borderCurve:"continuous",
-            paddingHorizontal:10,
-            elevation:2,
-            shadowColor: "rgba(240,230,240,.8)",
-            shadowOffset:{
-                width:1,
-                height:5
-            }
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  headertext: {
+    fontSize: vh(3.5),
+    fontWeight: "bold",
+  },
 
-        },
-        textinput:{
-           flex:1, 
-           height:"100%",
-           marginHorizontal:10,
-           borderColor:"#fff",
-           borderRadius: 20,
-           borderCurve:"continuous",
-           fontSize: vh(1.8),
-        },
-        category:{
-            
-        },
-        cancel:{
-        backgroundColor:"rgba(250 , 250 , 250 , 0.8)"
-        }
-    }
-)
+  category: {},
+});
 
-export default home
+export default home;

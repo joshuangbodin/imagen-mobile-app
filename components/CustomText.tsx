@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { vh } from '@/helpers/valuechangers';
+import { theme } from '@/constants/theme';
 
 interface props{
     text : string;
@@ -10,10 +11,10 @@ interface props{
     style: any
 }
 
-const CustomText = ({text}:props) => {
+const CustomText = ({text , style}:props) => {
   return (
     
-      <Text style={[styles.text]} >{text}</Text>
+      <Text style={[styles.text,style]} >{text}</Text>
     
   )
 }
@@ -23,6 +24,6 @@ export default CustomText
 const styles = StyleSheet.create({
     text:{
         fontSize: vh(1.8),
-        color:'#fff'
+        color: theme.colors.black
     }
 })

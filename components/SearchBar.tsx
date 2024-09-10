@@ -3,14 +3,21 @@ import React, { useState } from 'react'
 import { Feather, Ionicons } from '@expo/vector-icons'
 import { vh, vw } from '@/helpers/valuechangers'
 
-const SearchBar = () => {
+interface props{
+    handleSearch : (text:string)=> any
+}
+
+const SearchBar = ({handleSearch}:props) => {
      //search const
      const [search , setSearch] = useState("")
 
   return (
     <View style={styles.searchbar}>
     <Feather size={vh(3)} color={"gray"} name="search"/>
-    <TextInput placeholder=' Search for photos...' style={styles.textinput} value={search} onChangeText={(value) => setSearch(value)}/>
+    <TextInput placeholder=' Search for photos...' style={styles.textinput} value={search} onChangeText={(value)=> {
+        setSearch(value)
+        handleSearch(value)
+    }}/>
     { search&&<Pressable style={styles.cancel}>
         <Ionicons size={vh(3)} color={"gray"} name="close"/>
     </Pressable>}

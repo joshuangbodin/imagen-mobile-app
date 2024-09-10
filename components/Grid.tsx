@@ -5,27 +5,20 @@ import { theme } from "@/constants/theme";
 import { getNoOfColumns, vh, vw } from "@/helpers/valuechangers";
 import ImageCard from "./ImageCard";
 
-const Grid = () => {
-  const isNotLast = () =>{
+interface props{
+  data : Image[]
+}
 
-  }
+const Grid = ({data}:props) => {
+
   return (
     <MasonryFlashList
-      data={[
-        { height: 150 },
-        { height: 300 },
-        { height: 250 },
-        { height: 100 },
-        { height: 150 },
-        { height: 300 },
-        { height: 250 },
-        { height: 100 },
-      ]}
+      data={data}
       contentContainerStyle={{}}
       style={{gap:10}}
       numColumns={getNoOfColumns()}
       renderItem={({item , index})=>(
-        <ImageCard columns={getNoOfColumns()} index={index} />
+        <ImageCard image={item.webformatURL} imageHeight={item.webformatHeight} imagewidth={item.webformatWidth} columns={getNoOfColumns()} index={index} />
       )}
     />
   );

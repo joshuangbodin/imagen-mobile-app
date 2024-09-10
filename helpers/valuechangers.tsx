@@ -26,3 +26,15 @@ export const getNoOfColumns = () =>{
         return 2
     }
 }
+
+export const getHeight=(width:number , height:number)=>{
+    if (width>height){
+        return 250
+    }
+    else if (height>width){
+        return 350
+    }
+    else{
+        return 300
+    }
+}

@@ -2,14 +2,17 @@ import { Pressable, StyleSheet, Text, Image } from "react-native";
 import React from "react";
 import CustomText from "./CustomText";
 import { theme } from "@/constants/theme";
-import { vh, vw } from "@/helpers/valuechangers";
+import { getHeight, vh, vw } from "@/helpers/valuechangers";
 interface props {
   columns: number;
   index: number;
+  image: string;
+  imageHeight:number;
+  imagewidth:number;
 }
-const ImageCard = ({ columns, index }: props) => {
+const ImageCard = ({ columns,image,imageHeight,imagewidth, index }: props) => {
 
-    
+
   const getLeftGap = (number: number) => {
     return number % columns === 0;
   };
@@ -17,10 +20,9 @@ const ImageCard = ({ columns, index }: props) => {
 
   return (
     <Pressable
-      style={[styles.cont, !getLeftGap(index) && { marginLeft: vw(2) }]}
+        style={[styles.cont,{height:getHeight(imagewidth , imageHeight)}, !getLeftGap(index) && { marginLeft: vw(2) }]}
     >
-      <Image style={styles.image}></Image>
-      {/* <CustomText text={'Picture'} style={undefined}/> */}
+      <Image source={{uri:image}} style={styles.image}></Image>
     </Pressable>
   );
 };
@@ -38,5 +40,7 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 300,
+    width:'auto',
+    objectFit:'cover'
   },
 });
